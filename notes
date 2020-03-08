@@ -1,0 +1,6 @@
+####Spring Security default behavior
+
+Add mandatory authentication for all URLs;
+Add login form;
+Handles login error;
+Creates a user and sets a default password.
