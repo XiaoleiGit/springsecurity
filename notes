@@ -1,6 +1,9 @@
-####Spring Security default behavior
+1. Spring Security default behavior
 
 Add mandatory authentication for all URLs;
 Add login form;
 Handles login error;
 Creates a user and sets a default password.
+
+2. AuthenticationManager
+AuthenticationManagerBuilder to configure what authentication to do
