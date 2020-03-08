@@ -1,8 +1,11 @@
 package org.example.springsecurity;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -12,7 +15,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication()
                 .withUser("foo")
                 .password("foo")
+                .roles("USER")
+                .and()
+                .withUser("wang")
+                .password("wang")
                 .roles("USER");
+
+    }
+
+    @Bean
+    public PasswordEncoder getPasswordEncoded() {
+        return NoOpPasswordEncoder.getInstance();
     }
 
 }
