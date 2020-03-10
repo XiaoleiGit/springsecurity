@@ -31,7 +31,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .roles("ADMIN");
 
         auth.jdbcAuthentication()
-                .dataSource(dataSource);
+                .dataSource(dataSource)
+//                customize which table the users and authorities should be selected from
+                .usersByUsernameQuery("select username,password,enabled "
+                    + "from users "
+                    + "where username = ?")
+                .authoritiesByUsernameQuery("select username,authority "
+                    + "from authorities "
+                    + "where username = ?");
 
 
     }
@@ -44,8 +51,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/user").hasRole("USER")
-                .antMatchers("/admin").hasAnyRole("ADMIN","USER")
+                .antMatchers("/admin").hasRole("ADMIN")
+                .antMatchers("/user").hasAnyRole("ADMIN","USER")
                 .antMatchers("/").permitAll()
                 .and().formLogin();
     }
