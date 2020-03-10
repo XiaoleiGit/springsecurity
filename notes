@@ -5,5 +5,14 @@ Add login form;
 Handles login error;
 Creates a user and sets a default password.
 
-2. AuthenticationManager
+* AuthenticationManager
 AuthenticationManagerBuilder to configure what authentication to do
+* HttpSecurity
+To configure authorization for different role
+
+Add spring security is actually using a filter, it doing filter mapping to intercept all the request, and maps it to spring security's own filter call DelegatingFilterProxy.
+
+Authentication:
+Input: credentials
+Output: principle (the information of the logged in user)
+
