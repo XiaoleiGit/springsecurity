@@ -16,34 +16,11 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-//    @Autowired
-//    DataSource dataSource;
-
     @Autowired
     UserDetailsService userDetailsService;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        Set in-memory authentication
-//        auth.inMemoryAuthentication()
-//                .withUser("foo")
-//                .password("foo")
-//                .roles("USER")
-//                .and()
-//                .withUser("wang")
-//                .password("wang")
-//                .roles("ADMIN");
-
-//        auth.jdbcAuthentication()
-//                .dataSource(dataSource)
-////                customize which table the users and authorities should be selected from
-//                .usersByUsernameQuery("select username,password,enabled "
-//                    + "from users "
-//                    + "where username = ?")
-//                .authoritiesByUsernameQuery("select username,authority "
-//                    + "from authorities "
-//                    + "where username = ?");
-        auth.userDetailsService(userDetailsService);
 
 
     }
